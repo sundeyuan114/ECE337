@@ -1,0 +1,214 @@
+Coverage Report Summary Data by instance
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[15]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[14]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[13]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[12]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[11]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[10]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[9]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[8]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[7]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[6]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[5]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[4]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[3]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[2]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[1]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10        10         0    100.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX/genblk2[0]/IX
+=== Design Unit: work.adder_1bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            4         4         0    100.00
+    FEC Expression Terms             6         6         0    100.00
+    Toggle Bins                     10         9         1     90.00
+    Assertions                       1         1         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT/IX
+=== Design Unit: work.adder_nbit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           34        34         0    100.00
+    Toggle Bins                    134       133         1     99.25
+    Assertions                      16        16         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit/DUT
+=== Design Unit: work.adder_16bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           32        32         0    100.00
+    Toggle Bins                    100        99         1     99.00
+    Assertions                      16        16         0    100.00
+
+=================================================================================
+=== Instance: /tb_adder_16bit
+=== Design Unit: work.tb_adder_16bit
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           56        50         6     89.28
+    Branches                         6         2         4     33.33
+    FEC Condition Terms              3         0         3      0.00
+    Toggle Bins                    234       200        34     85.47
+
+
+TOTAL ASSERTION COVERAGE: 100.00%  ASSERTIONS: 48
+
+Total Coverage By Instance (filtered view): 70.44%
+

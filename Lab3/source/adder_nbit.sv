@@ -5,6 +5,7 @@
 // Lab Section: 337-06
 // Version:     1.0  Initial Design Entry
 // Description: adder with parameter n
+`timescale 1ns / 100ps
 
 module adder_nbit 
 #(
@@ -18,9 +19,22 @@ module adder_nbit
 	output logic overflow
 );
 
-    logic [BIT_WIDTH:0] carrys;
     genvar i;
+	generate
+	for(i = 0; i < BIT_WIDTH; i++) begin
+		always @(a, b, carry_in)
+		begin
+            #(2)	assert(a == 1'b1 || a == 1'b0 || b == 1'b1 || b == 1'b0 || carry_in == 1'b1 || carry_in == 1'b0)
+            else $error("nbit wrong");
+		end
+	end
+	endgenerate
+
+
+    logic [BIT_WIDTH:0] carrys;
     assign carrys[0] = carry_in;
+
+    
     generate 
         for(i = 0; i < BIT_WIDTH; i++)
         begin
@@ -28,5 +42,15 @@ module adder_nbit
         end
     endgenerate
     assign overflow = carrys[BIT_WIDTH];
+
+	generate
+	for(i = 0; i < BIT_WIDTH; i++) begin
+		always @(a[i], b[i], carrys[i])
+		begin
+            #(2)	assert((( a[i] + b[i] + carrys[i] ) % 2 ) == sum[i])
+            else $error("nbit out wrong");
+		end
+	end
+	endgenerate
 
 endmodule
