@@ -3,13 +3,15 @@ module timer (
     input logic n_rst,
     input logic enable_timer,
     output logic shift_strobe,
-    output logic packet_done
+    output logic packet_done,
+    input logic [13:0] bit_period,
+    input logic [3:0] data_size
 );
-logic [3:0] Richardsaidthisisimportant;
+logic [13:0] Richardsaidthisisimportant;
 logic [3:0] Richardsaidthisisimportant2;
 
-flex_counter # (.NUM_CNT_BITS(4)) count1_bitcount (
-    .rollover_val(4'd10),
+flex_counter # (.NUM_CNT_BITS(14)) count1_bitcount (
+    .rollover_val(bit_period),
     .clear(!enable_timer),
     .count_enable(enable_timer),
     .clk(clk),
@@ -19,7 +21,7 @@ flex_counter # (.NUM_CNT_BITS(4)) count1_bitcount (
 );
 
 flex_counter # (.NUM_CNT_BITS(4)) count2_clkcount (
-    .rollover_val(4'd9),
+    .rollover_val(data_size + 4'b1),
     .clear(!enable_timer),
     .count_enable(shift_enable),
     .clk(clk),

@@ -50,6 +50,8 @@ Pad: FW2 W PADNC
 Orient: R90
 Pad: U1 W
 Orient: R90
+Pad: U2 W
+Orient: R90
 Pad: FW3 W PADNC
 Orient: R90
 Pad: P1 W PADVDD
@@ -57,8 +59,6 @@ Orient: R90
 Pad: G1 W PADGND
 Orient: R90
 Pad: FW4 W PADNC
-Orient: R90
-Pad: U2 W
 Orient: R90
 Pad: FW5 W PADNC
 Orient: R90

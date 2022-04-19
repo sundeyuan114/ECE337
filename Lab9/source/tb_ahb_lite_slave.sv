@@ -348,7 +348,7 @@ initial begin
   reset_model();
 
   //*****************************************************************************
-  // Power-on-Reset Test Case
+  // Power-on-Reset Test Case 0 
   //*****************************************************************************
   // Update Navigation Info
   tb_test_case     = "Power-on-Reset";
@@ -371,7 +371,7 @@ initial begin
   #(CLK_PERIOD * 3);
 
   //*****************************************************************************
-  // Test Case: Set a new sample value
+  // Test Case: Set a new sample value 1
   //*****************************************************************************
   // Update Navigation Info
   tb_test_case     = "Send Sample";
@@ -401,7 +401,7 @@ initial begin
 
 
   //*****************************************************************************
-  // Test Case: Configure and check a Coefficient Value
+  // Test Case: Configure and check a Coefficient Value 2
   //*****************************************************************************
   // Update Navigation Info
   tb_test_case     = "Configure Coeff F3";
@@ -442,7 +442,112 @@ initial begin
 
   // Reset the DUT to isolate from prior test case
   reset_dut();
+///////////
+// • Test for correct operation during Master reads of the AHB-Lite-Slave Interface’s result register
+// • Test for correct operation during Master reads of the AHB-Lite-Slave Interface’s new sample register
+// • Test for correct operation during Master reads of the AHB-Lite-Slave Interface’s status register
+// • Test for correct operation during Master reads of the AHB-Lite-Slave Interface’s coefficient related registers
+// • Test for correct operation during Master writes to the AHB-Lite-Slave Interface’s result register
+// Page 2 of 16
+// ASIC Design Laboratory Lab 9 Manual Spring 2022
+// • Test for correct operation during Master writes to the AHB-Lite-Slave Interface’s new sample register
+// • Test for correct operation during Master writes to the AHB-Lite-Slave Interface’s status register
+// • Test for correct operation during Master writes to the AHB-Lite-Slave Interface’s coefficient related registers
 
+
+   //*****************************************************************************
+  // Test Case 3: status register
+  //*****************************************************************************
+  // Update Navigation Info
+  tb_test_case     = "read status register";
+  tb_test_case_num = tb_test_case_num + 1;
+  init_fir_side();
+  init_expected_outs();
+  // Reset the DUT to isolate from prior test case
+  reset_dut();
+
+  tb_err = 1;
+  enqueue_transaction(1'b1, READ, ADDR_STATUS, 16'h0000, NOERR, BYTE2);
+  execute_transactions(1);
+  tb_modwait = 1;
+  enqueue_transaction(1'b1, READ, ADDR_STATUS, 16'h0101, NOERR, BYTE2);
+  execute_transactions(1);
+  tb_err = 0;
+  enqueue_transaction(1'b1, READ, ADDR_STATUS, 16'h0101, NOERR, BYTE2);
+  execute_transactions(1);
+  tb_modwait = 0;
+  enqueue_transaction(1'b1, READ, ADDR_STATUS, 16'h0000, NOERR, BYTE2);
+  execute_transactions(1);
+  #(CLK_PERIOD * 3);
+
+  $info("test case %d, %s", tb_test_case_num, tb_test_case);
+  //*****************************************************************************
+  // Test Case 4: coef_clear
+  //*****************************************************************************
+  tb_test_case     = "coef_clear";
+  tb_test_case_num = tb_test_case_num + 1;
+  init_fir_side();
+  init_expected_outs();
+  reset_dut();
+  
+  tb_test_data = 16'h0001;
+  enqueue_transaction(1'b1, WRITE, ADDR_COEF_SET, tb_test_data, NOERR, BYTE1);
+  enqueue_transaction(1'b1, READ, ADDR_COEF_SET, tb_test_data, NOERR, BYTE2);
+  execute_transactions(2);
+
+  tb_coeff_clr = 1;
+  #(CLK_PERIOD * 1.5);
+  tb_coeff_clr = 0;
+
+  enqueue_transaction(1'b1, READ, ADDR_COEF_SET, 16'b0, NOERR, BYTE2);
+  execute_transactions(1);
+  #(CLK_PERIOD * 3);
+
+ 
+
+  //*****************************************************************************
+  // Test Case 5: status register err 
+  //*****************************************************************************
+  // Update Navigation Info
+  tb_test_case     = "write status register err test";
+  tb_test_case_num = tb_test_case_num + 1;
+  init_fir_side();
+  init_expected_outs();
+
+  reset_dut();
+
+  enqueue_transaction(1'b1, WRITE, ADDR_STATUS, 16'h0100, ERR, BYTE2);
+  execute_transactions(1);
+
+
+ $info("test case finished %d, %s", tb_test_case_num, tb_test_case);
+
+  //*****************************************************************************
+  // Test Case 6: result register 
+  //*****************************************************************************
+  // Update Navigation Info
+  tb_test_case     = "read result register test";
+  tb_test_case_num = tb_test_case_num + 1;
+  init_fir_side();
+  init_expected_outs();
+  // Reset the DUT to isolate from prior test case
+  reset_dut();
+  $info("test case %d, %s", tb_test_case_num, tb_test_case);
+  tb_fir_out = 16'h0;
+
+  #(CLK_PERIOD * 3);
+  
+  enqueue_transaction(1'b1, READ, ADDR_RESULT, 16'h0, NOERR, BYTE2);
+  execute_transactions(1);
+  
+  #(CLK_PERIOD * 3);
+  
+  enqueue_transaction(1'b1, WRITE, ADDR_RESULT, 16'h0, ERR, BYTE2);
+  execute_transactions(1);
+
+  #(CLK_PERIOD);
+
+ $info("test case finished %d, %s", tb_test_case_num, tb_test_case);
 end
 
 endmodule

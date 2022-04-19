@@ -6,7 +6,10 @@ module rcv_block(
     output logic [7:0] rx_data,
     output logic data_ready,
     output logic overrun_error,
-    output logic framing_error
+    output logic framing_error,
+
+    input logic [3:0] data_size,
+    input logic [13:0] data_period
 );
 
     logic new_packet_detected;
@@ -18,6 +21,23 @@ module rcv_block(
     logic shift_strobe;
     logic stop_bit;
     logic [7:0] packet_data;
+    logic [7:0] packet_dat2;
+    logic start_bit_detected;
+
+    //change according to datasize
+    always_comb begin : rx_data_mux_for_shifting
+        if (data_size == 3'd7) begin
+            packet_data = {1'b0, packet_dat2[7:1]}; // rx_data[7:1]????
+        end
+        else if (data_size == 3'd5) begin
+            packet_data = {3'b000, packet_dat2[7:3]};
+        end
+        else begin
+            packet_data = packet_dat2;
+        end
+
+    end
+    //
 
     rx_data_buff buff1(
         .clk(clk),
@@ -47,7 +67,9 @@ module rcv_block(
     .n_rst(n_rst),
     .enable_timer(enable_timer),
     .shift_strobe(shift_strobe),
-    .packet_done(packet_done)
+    .packet_done(packet_done),
+    .bit_period(data_period),
+    .data_size(data_size)
     );
 
     sr_9bit sr_9bit1 (
@@ -55,7 +77,7 @@ module rcv_block(
      .n_rst(n_rst),
      .shift_strobe(shift_strobe),
      .serial_in(serial_in),
-     .packet_data(packet_data),
+     .packet_data(packet_dat2),
      .stop_bit(stop_bit)
     );
 

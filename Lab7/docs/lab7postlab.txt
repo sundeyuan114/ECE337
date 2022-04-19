@@ -1,0 +1,21 @@
+7.1
+2 clock cycles for data_ready must assert to reach zero state.
+3 clock cycles for data must assert for after data_ready is asserted reach store state.
+
+7.2
+It looks like different type of edge detector in computer vision. One is horizontal, one vertical and one for both direction.
+
+
+general file input IO:
+
+		in_file = $fopen(INPUT_FILENAME, "rb");
+		// Read in the Bitmap file header information (data is stored in little-endian (LSB first) format)
+		for(i = 0; i < BMP_HEADER_SIZE_BYTES; i = i + 1) // Read the data in LSB format
+		begin
+			// Read a byte at a time
+			quiet_catch = $fscanf(in_file,"%c" , in_bmp_file_header[i]);
+		end
+
+
+only %c in our case,
+but fscanf can take something else like %d %f %s

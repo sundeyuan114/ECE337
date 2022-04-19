@@ -154,6 +154,8 @@ apb_slave DUT ( .clk(tb_clk), .n_rst(tb_n_rst),
 //*****************************************************************************
 // DUT Related TB Tasks
 //*****************************************************************************
+
+
 // Task for standard DUT reset procedure
 task reset_dut;
 begin
@@ -394,8 +396,87 @@ initial begin
 
   // Student TODO: Add more test cases here
   // Update Navigation Info
-  tb_test_case     = "Need More Tests!";
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
+  //*****************************************************************************
+  // Test Case 3: FILL THE BASIC REQUIREMENTS
+  //*****************************************************************************
+
+  // task enqueue_transaction;
+  //   input logic for_dut;
+  //   input logic write_mode;
+  //   input logic [ADDR_MAX_BIT:0] address;
+  //   input logic [DATA_MAX_BIT:0] data;
+  //   input logic expected_error;
+  // begin
+
+  tb_test_case     = ":D";
   tb_test_case_num = tb_test_case_num + 1;
+
+  tb_test_bit_period = 14'd1000;
+  // Reset the DUT to isolate from prior to isolate from prior test case
+  reset_dut();
+
+  //test for correct operation during Master writes to the APB-Slave Interface’s configuration registers
+  enqueue_transaction(1'b1, 1'b1, 3'd0, tb_test_bit_period[7:0], 1'b1);
+  execute_transactions(1);
+  //test for correct operation during Master writes to the APB-Slave Interface’s stats register
+  enqueue_transaction(1'b1, 1'b1, 3'd1, tb_test_bit_period[7:0], 1'b1);
+  execute_transactions(1);
+  //test for correct operation during Master writes to the APB-Slave Interface’s data buffer
+  enqueue_transaction(1'b1, 1'b1, 3'd2, tb_test_bit_period[7:0], 1'b0);
+  execute_transactions(1);
+  //test for correct operation during Master reads of the APB-Slave Interface’s data buffer
+  enqueue_transaction(1'b1, 1'b0, 3'd0, '0, 1'b0);
+  execute_transactions(1);
+  //test for correct operation during Master reads of the APB-Slave Interface’s status register
+  enqueue_transaction(1'b1, 1'b0, 3'd1, '0, 1'b0);
+  execute_transactions(1);
+  //test for correct operation during Master reads of the APB-Slave Interface’s configuration registers
+  enqueue_transaction(1'b1, 1'b0, 3'd2, 14'd1000, 1'b0);
+  execute_transactions(1);
+
+  //*****************************************************************************
+  // Test Case 3: error
+  //*****************************************************************************
+  tb_test_case     = "error";
+  tb_test_case_num = tb_test_case_num + 1;
+
+  reset_dut();
+
+  tb_test_bit_period = 14'd100;
+
+  enqueue_transaction(1'b1, 1'b1, 3'd2, tb_test_bit_period[7:0], 1'b0);
+  enqueue_transaction(1'b1, 1'b1, 3'd3, {2'b00, tb_test_bit_period[13:8]}, 1'b0);
+  execute_transactions(2);
+  enqueue_transaction(1'b1, 1'b1, 3'd4, tb_data_size, 1'b0);
+  execute_transactions(1);
+  //
+  tb_rx_data = 8'b10011111;
+  tb_framing_error = 0;
+  enqueue_transaction(1'b1, 1'b0, ADDR_RX_DATA, tb_rx_data, 1'b0);
+  execute_transactions(1);
+  tb_framing_error = 0;
+  enqueue_transaction(1'b1, 1'b0, ADDR_ERROR_SR, 8'd0, 1'b0);
+  execute_transactions(1);
+  tb_framing_error = 1;
+  enqueue_transaction(1'b1, 1'b0, ADDR_ERROR_SR, 8'd1, 1'b0);
+  execute_transactions(1);
+
+  //
+  tb_rx_data = 8'b10011111;
+  tb_overrun_error = 0;
+  enqueue_transaction(1'b1, 1'b0, ADDR_ERROR_SR, 8'd0, 1'b0);
+  execute_transactions(1);
+  tb_overrun_error = 1;
+  enqueue_transaction(1'b1, 1'b0, ADDR_ERROR_SR, 8'd2, 1'b0);
+  execute_transactions(1);
+  tb_overrun_error = 0;
+  tb_expected_data_read  = 8'd2;
+  tb_expected_bit_period = tb_test_bit_period;
+  tb_expected_data_size  = tb_data_size;
+
+
 
 end
 

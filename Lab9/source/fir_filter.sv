@@ -22,19 +22,19 @@ module fir_filter(
     logic cnt_up;
     logic clear;
 
-    sync_low synclowLC(
-    .clk(clk),
-    .n_rst(n_reset),
-    .async_in(load_coeff),
-    .sync_out(lc)
-    );
+    // sync_low synclowLC(
+    // .clk(clk),
+    // .n_rst(n_reset),
+    // .async_in(load_coeff),
+    // .sync_out(lc)
+    // );
 
-    sync_low synclowDR(
-    .clk(clk),
-    .n_rst(n_reset),
-    .async_in(data_ready),
-    .sync_out(dr)
-    );
+    // sync_low synclowDR(
+    // .clk(clk),
+    // .n_rst(n_reset),
+    // .async_in(data_ready),
+    // .sync_out(dr)
+    // );
 
     counter count_to_1k(
     .clk(clk),
@@ -52,8 +52,8 @@ module fir_filter(
     controller controller1 ( 
         .clk(clk),
         .n_rst(n_reset),
-        .dr(dr),
-        .lc(lc),
+        .dr(data_ready),
+        .lc(load_coeff),
         .overflow(overflow),
         .cnt_up(cnt_up),
         .clear(clear),

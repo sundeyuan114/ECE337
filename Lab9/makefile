@@ -19,12 +19,12 @@ include /home/ecegrid/a/ece337/Course_Prod/course_make_vars
 #
 # **** list all files on the same line. DO NOT USE the "\" escape character to extend across 
 #      multiple lines. The grading script expects all file names on one line. 
-COMPONENT_FILES	:= 
+COMPONENT_FILES	:=  magnitude.sv coefficient_loader.sv counter.sv fir_filter.sv ahb_lite_slave.sv controller.sv  flex_counter.sv
 
 # Specify the name of the top level file (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
 # AND THE AUTOMATED GRADING SYSTEM
-TOP_LEVEL_FILE	:= 
+TOP_LEVEL_FILE	:= ahb_lite_fir_filter.sv
 
 # Specify the filepath of the test bench you want to use (ie. tb_top_level.sv)
 # (do not include the source folder in the name)
